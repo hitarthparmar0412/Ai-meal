@@ -46,9 +46,14 @@ class _MainShellState extends State<MainShell> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: screens[_current]),
+      body: SafeArea(
+        child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 260),
+          child: KeyedSubtree(key: ValueKey(_current), child: screens[_current]),
+        ),
+      ),
       floatingActionButton: _current == 2
-          ? FloatingActionButton(
+          ? FloatingActionButton.extended(
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (_) => const ScannerScreen()),
@@ -61,11 +66,23 @@ class _MainShellState extends State<MainShell> {
         selectedIndex: _current,
         onDestinationSelected: (index) => setState(() => _current = index),
         destinations: const [
-          NavigationDestination(icon: Icon(Icons.home_outlined), label: 'Home'),
-          NavigationDestination(icon: Icon(Icons.calendar_month_outlined), label: 'Planner'),
-          NavigationDestination(icon: Icon(Icons.monitor_heart_outlined), label: 'Track'),
-          NavigationDestination(icon: Icon(Icons.shopping_cart_outlined), label: 'Grocery'),
-          NavigationDestination(icon: Icon(Icons.person_outline), label: 'Profile'),
+          NavigationDestination(icon: Icon(Icons.home_outlined), selectedIcon: Icon(Icons.home_rounded), label: 'Home'),
+          NavigationDestination(
+            icon: Icon(Icons.calendar_month_outlined),
+            selectedIcon: Icon(Icons.calendar_month_rounded),
+            label: 'Planner',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.monitor_heart_outlined),
+            selectedIcon: Icon(Icons.monitor_heart_rounded),
+            label: 'Track',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.shopping_cart_outlined),
+            selectedIcon: Icon(Icons.shopping_cart_rounded),
+            label: 'Grocery',
+          ),
+          NavigationDestination(icon: Icon(Icons.person_outline), selectedIcon: Icon(Icons.person_rounded), label: 'Profile'),
         ],
       ),
     );

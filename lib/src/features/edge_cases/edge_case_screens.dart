@@ -7,7 +7,7 @@ class NoInternetScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
-      const EmptyState(title: 'No internet', description: 'Please check your connection and try again.');
+      const EmptyState(title: 'No internet', description: 'Please check your connection and retry sync.', actionLabel: 'Retry');
 }
 
 class AiFailedScreen extends StatelessWidget {
@@ -15,13 +15,16 @@ class AiFailedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
-      const EmptyState(title: 'AI failed', description: 'We could not generate a plan. Please retry.');
+      const EmptyState(title: 'AI failed', description: 'We could not generate a plan. Try another prompt.', actionLabel: 'Regenerate');
 }
 
 class SubscriptionExpiredScreen extends StatelessWidget {
   const SubscriptionExpiredScreen({super.key});
 
   @override
-  Widget build(BuildContext context) =>
-      const EmptyState(title: 'Subscription expired', description: 'Renew premium to continue AI-powered features.');
+  Widget build(BuildContext context) => const EmptyState(
+        title: 'Subscription expired',
+        description: 'Renew premium to continue scanner and AI optimization features.',
+        actionLabel: 'Renew Premium',
+      );
 }

@@ -14,17 +14,49 @@ class ScannerScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            const Expanded(
+            Expanded(
               child: AppCard(
-                child: Center(child: Text('Camera overlay placeholder\n(Barcode + Image recognition)')),
+                gradient: LinearGradient(
+                  colors: [Colors.black.withValues(alpha: .85), const Color(0xFF1F2937)],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+                child: Stack(
+                  children: [
+                    const Center(
+                      child: Text(
+                        'Camera overlay\nBarcode + Image AI Detection',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.white70),
+                      ),
+                    ),
+                    Center(
+                      child: Container(
+                        height: 210,
+                        width: 210,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(22),
+                          border: Border.all(color: Colors.white70, width: 2),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 12),
             Row(
               children: [
-                Expanded(child: AppButton(label: 'Scan Barcode', onPressed: () {})),
+                Expanded(child: AppButton(label: 'Scan Barcode', onPressed: () {}, icon: Icons.qr_code_rounded)),
                 const SizedBox(width: 8),
-                Expanded(child: AppButton(label: 'Capture Food', onPressed: () {}, type: AppButtonType.secondary)),
+                Expanded(
+                  child: AppButton(
+                    label: 'Capture Food',
+                    onPressed: () {},
+                    type: AppButtonType.secondary,
+                    icon: Icons.camera_alt_outlined,
+                  ),
+                ),
               ],
             ),
           ],

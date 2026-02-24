@@ -13,10 +13,22 @@ class PaywallScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          const AppCard(child: Text('Free: Limited AI • Basic tracking')),
-          const AppCard(child: Text('Premium: Unlimited AI • Scanner • Pantry optimization • Insights')),
+          const AppCard(
+            gradient: LinearGradient(colors: [Color(0xFF6D5CFF), Color(0xFF2DD4BF)]),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Premium Intelligence', style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w800)),
+                SizedBox(height: 6),
+                Text('Unlimited AI plans, scanner access, pantry optimization and advanced insights.', style: TextStyle(color: Colors.white70)),
+              ],
+            ),
+          ),
           const SizedBox(height: 12),
-          AppButton(label: 'Start Premium', onPressed: () {}),
+          const AppCard(child: Text('Free Plan\n• Limited AI generation\n• Manual planner\n• Basic tracking')),
+          const AppCard(child: Text('Premium Plan\n• Unlimited AI generation\n• Barcode + image scanner\n• Pantry optimization\n• Advanced insights')),
+          const SizedBox(height: 12),
+          AppButton(label: 'Start Premium', onPressed: () {}, icon: Icons.workspace_premium_rounded),
         ],
       ),
     );

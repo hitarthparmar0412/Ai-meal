@@ -13,7 +13,8 @@ class PantryScreen extends StatelessWidget {
     if (items.isEmpty) {
       return const EmptyState(
         title: 'No pantry items',
-        description: 'Add pantry ingredients to get expiry alerts and smart reuse suggestions.',
+        description: 'Add ingredients to unlock expiry alerts and smart reuse recommendations.',
+        actionLabel: 'Add Ingredient',
       );
     }
 
@@ -22,7 +23,24 @@ class PantryScreen extends StatelessWidget {
       children: [
         Text('Pantry Management', style: Theme.of(context).textTheme.headlineSmall),
         const SizedBox(height: 12),
-        ...items.map((item) => AppCard(child: ListTile(title: Text(item)))),
+        const AppCard(
+          child: ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: Icon(Icons.notification_important_outlined),
+            title: Text('Expiry intelligence enabled'),
+            subtitle: Text('2 items need action this week'),
+          ),
+        ),
+        ...items.map(
+          (item) => AppCard(
+            child: ListTile(
+              contentPadding: EdgeInsets.zero,
+              title: Text(item),
+              subtitle: const Text('Reuse suggestion available'),
+              trailing: const Icon(Icons.restaurant_menu_rounded),
+            ),
+          ),
+        ),
       ],
     );
   }
