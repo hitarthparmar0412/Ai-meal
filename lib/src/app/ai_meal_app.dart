@@ -59,8 +59,7 @@ class _MainShellState extends State<MainShell> {
                   MaterialPageRoute(builder: (_) => const ScannerScreen()),
                 );
               },
-              label: const Text('Scan Food'),
-              icon: const Icon(Icons.qr_code_scanner_rounded),
+              child: const Icon(Icons.qr_code_scanner),
             )
           : null,
       bottomNavigationBar: NavigationBar(
